@@ -5,10 +5,9 @@ import ScaleSelect from './ui/ScaleSelect.tsx'
 
 const ChatPanel = ({ variant = "primary" }) => {
     const [scaleMode, setScaleMode] = useState("sm");
-
     const styles = {
         primary: "flex flex-col justify-center items-center bg-gray-900 h-screen w-1/2",
-        secondary: "flex flex-col justify-center items-center bg-gray-200",
+        secondary: "flex flex-col justify-center items-center bg-gray-200 h-screen w-1/2",
     }
 
     return (
