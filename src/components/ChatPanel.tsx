@@ -5,7 +5,12 @@ import ScaleSelect from './ui/ScaleSelect.tsx'
 import MarkdownRender from './ui/MarkdownRender.tsx'
 import { sendChat, type Message } from '../models/githubModels.ts'
 
-const ChatPanel = ({ variant = "primary" }) => {
+interface ChatPanelProps {
+    variant?: "primary" | "secondary";
+    selectedMode?: string;
+}
+
+const ChatPanel = ({ variant = "primary", selectedMode = "default" }: ChatPanelProps) => {
     const [scaleMode, setScaleMode] = useState("sm");
     const [messages, setMessages] = useState<Message[]>([]);
     const [loading, setLoading] = useState(false);
@@ -27,7 +32,7 @@ const ChatPanel = ({ variant = "primary" }) => {
         setLoading(true);
 
         try {
-            const reply = await sendChat(updated);
+            const reply = await sendChat(updated, selectedMode);
             setMessages([...updated, { role: "system", content: reply }]);
         } catch (err) {
             console.error(err);
