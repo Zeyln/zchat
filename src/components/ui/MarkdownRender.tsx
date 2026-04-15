@@ -57,7 +57,7 @@ export default function MarkdownRender({ content }: Props) {
                                 {children}
                             </code>
                         ) : (
-                            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+                            <pre className="bg-gray-800 p-4 rounded-sm overflow-x-auto border-1 border-gray-700 text-amber-100">
                                 <code>{children}</code>
                             </pre>
                         );

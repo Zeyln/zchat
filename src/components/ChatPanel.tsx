@@ -17,8 +17,8 @@ const ChatPanel = ({ variant = "primary", selectedMode = "default" }: ChatPanelP
     const inputRef = useRef<HTMLDivElement>(null);
 
     const styles = {
-        primary: "flex flex-col self-end justify-end items-center bg-gray-900 h-screen w-3/4",
-        secondary: "flex flex-col self-end justify-bottom items-center bg-gray-200 h-screen w-3/4",
+        primary: "flex flex-col self-end justify-end items-start bg-gradient-to-t from-slate-500 to-gray-900 h-screen w-3/4",
+        secondary: "flex flex-col self-end justify-end items-start bg-gray-200 h-screen w-3/4",
     }
 
     const handleSend = async () => {
@@ -43,27 +43,31 @@ const ChatPanel = ({ variant = "primary", selectedMode = "default" }: ChatPanelP
 
     return (
         <div className={`${styles[variant]}`}>
-            <div className="flex flex-col gap-2 w-4/5 mb-6 max-h-full overflow-y-auto">
+            <div className="flex flex-col self-start w-full max-h-full overflow-y-auto">
                 {messages.map((msg, i) => (
                     <div
                         key={i}
-                        className={`text-sm px-4 py-2 rounded-lg w-fit max-w-3/4 ${msg.role === "user"
-                            ? "self-end bg-gray-600 text-white"
-                            : "self-start bg-gray-700 text-gray-200"
+                        className={`text-sm px-4 py-2 w-full ${msg.role === "user"
+                            ? "self-start font-mono bg-[linear-gradient(to_right,_#7f1d1d_0%,_transparent_75%)] border-l-10 border-red-400 text-white"
+                            : "self-start font-mono bg-[linear-gradient(to_right,_#111827_0%,_transparent_75%)] border-l-10 border-blue-400 text-gray-200"
                             }`}
                     >
-                        <MarkdownRender content={msg.content} />
+                        <div className="flex flex-row">
+                            <p>&nbsp;</p>
+                            <MarkdownRender content={msg.content} />
+                        </div>
                     </div>
                 ))}
                 {loading && (
-                    <div className="self-start text-gray-400 text-sm px-4">Responding...</div>
+                    <div className="self-start text-gray-400 text-sm px-4 w-full bg-[linear-gradient(to_right,_#ffffff_0%,_transparent_75%)] animate-pulse">Responding...</div>
                 )}
             </div>
-            <ScaleSelect size={scaleMode} onSelect={setScaleMode} />
+
             <InputField ref={inputRef} size={scaleMode} onSubmit={handleSend}>
-                <Button size={scaleMode} onClick={handleSend} disabled={loading}>
+                <Button onClick={handleSend} disabled={loading}>
                     →
                 </Button>
+                <ScaleSelect className="flex flex-row static" size={scaleMode} onSelect={setScaleMode} />
             </InputField>
         </div>
     )

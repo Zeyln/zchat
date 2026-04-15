@@ -12,13 +12,13 @@ const InputField = forwardRef<HTMLDivElement, {
         password: "password...",
     };
     const styles = {
-        primary: "flex justify-between h-fit bg-gray-500 border-1 border-transparent text-white hover:border-gray-400",
-        secondary: "flex justify-between h-fit bg-gray-300 border-1 border-transparent text-black hover:border-gray-400",
+        primary: "flex justify-between self-start h-fit w-full bg-black/30 border-2 border-transparent text-white transition-colors hover:border-gray-900",
+        secondary: "flex justify-between self-start h-fit w-full bg-gray-300 border-1 border-transparent text-black transition-colors hover:border-gray-400",
     };
     const sizes = {
-        sm: "p-4 rounded-lg w-1/2 text-md",
-        md: "p-6 rounded-xl w-3/4 text-lg",
-        lg: "p-8 rounded-xl w-4/5 text-xl",
+        sm: "px-4 py-2 text-sm",
+        md: "p-4 text-md",
+        lg: "p-4 text-lg",
     };
 
     return (
@@ -29,7 +29,7 @@ const InputField = forwardRef<HTMLDivElement, {
                 contentEditable="true"
                 role="textbox"
                 aria-multiline="true"
-                className="outline-none flex-1 min-w-0 break-words pr-4 font-serif empty:before:content-[attr(data-placeholder)]"
+                className="outline-none flex-1 min-w-0 break-words pr-4 font-mono empty:before:content-[attr(data-placeholder)]"
                 onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                         e.preventDefault();

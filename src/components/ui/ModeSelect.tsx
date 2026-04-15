@@ -17,7 +17,7 @@ const ModeSelect = ({ modes, selected, onChange }: ModeSelectProps) => {
                 <button
                     key={key}
                     onClick={() => onChange(key)}
-                    className={`px-6 py-4 rounded-lg text-start justify-top text-md transition-colors transition-transform hover:scale-98
+                    className={`px-6 py-4 rounded-lg text-start justify-top text-md transition-transform hover:scale-98
                         ${selected === key
                             ? "bg-rose-600 text-white font-bold italic scale-98"
                             : "bg-gray-500 text-gray-900 hover:bg-natural-400"

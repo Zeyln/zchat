@@ -2,7 +2,7 @@ import Button from './Button.tsx'
 
 const ScaleSelect = ({ onSelect, variant = "primary", size = "sm", ...props }) => {
     const styles = {
-        primary: "flex flex-row border-1 border-gray-500 rounded-t-lg bg-gray-700",
+        primary: "flex flex-row border-1 border-gray-500 rounded-t-lg bg-gray-600",
         secondary: "flex flex-row bg-gray-300",
     }
     const sizes = {

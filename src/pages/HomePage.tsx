@@ -20,8 +20,8 @@ const HomePage = ({ variant = "primary" }) => {
         fetchModes().then(setModes);
     }, []);
     return (
-        <div className={`flex-row ${styles[variant]}`}>
-            <ModeSelect className="self-start"
+        <div className={` flex-row ${styles[variant]}`}>
+            <ModeSelect
                 modes={modes}
                 selected={selectedMode}
                 onChange={setSelectedMode}
